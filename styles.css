@@ -42,6 +42,9 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    /* Fixes the blur/ghosting issue by forcing a clean rendering layer */
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .logo {
@@ -63,11 +66,19 @@ body {
     transition: all 0.3s ease;
 }
 
-.navbar a:hover,
+/* Keeps the active/selected page white, with no glow */
 .navbar a.active {
-    color: var(--bg-color);
-    background: var(--main-color);
-    box-shadow: 0 0 15px var(--main-color);
+    color: var(--text-bg-color);
+    background: transparent;
+    box-shadow: none;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    background: transparent;
+    text-shadow: none; /* Keeps the actual letters/words from glowing */
+    /* Creates a soft glowing aura area behind the link without a solid shape */
+    box-shadow: 0 0 25px rgba(0, 171, 240, 0.6); 
 }
 
 #menu-icon {
@@ -472,10 +483,10 @@ section:nth-of-type(even) {
 
 /* Semi-Transparent Glass Card Base */
 .skill-display-card {
-    background: rgba(17, 46, 66, 0.4); /* Matches your second-bg-color with transparency */
-    backdrop-filter: blur(10px);        /* Soft frost window blur effect */
+    background: rgba(17, 46, 66, 0.4); 
+    backdrop-filter: blur(10px);        
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 171, 240, 0.2); /* Soft glowing cyan border outline */
+    border: 1px solid rgba(0, 171, 240, 0.2); 
     border-radius: 2rem;
     padding: 3.5rem 2.5rem;
     display: flex;
@@ -491,21 +502,21 @@ section:nth-of-type(even) {
 /* Hover Dynamic Glow Interactivity */
 .skill-display-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(0, 171, 240, 0.6); /* Intensified bright border line */
-    box-shadow: 0 15px 35px rgba(0, 171, 240, 0.15); /* Soft cyan external shadow glow */
+    border-color: rgba(0, 171, 240, 0.6); 
+    box-shadow: 0 15px 35px rgba(0, 171, 240, 0.15); 
 }
 
 /* Glowing Accent Icon Elements */
 .skill-card-icon i {
     font-size: 5.5rem;
-    color: var(--main-color); /* Matches your signature portfolio cyan */
+    color: var(--main-color); 
     margin-bottom: 1.5rem;
     filter: drop-shadow(0 0 8px rgba(0, 171, 240, 0.3));
 }
 
 .skill-display-card h3 {
     font-size: 2.4rem;
-    color: var(--text-bg-color); /* Sleek light off-white text */
+    color: var(--text-bg-color); 
     font-weight: 600;
     margin-bottom: 1.5rem;
     letter-spacing: 0.5px;
@@ -513,7 +524,7 @@ section:nth-of-type(even) {
 
 .skill-display-card p {
     font-size: 1.4rem;
-    color: rgba(237, 237, 237, 0.75); /* Highly readable semi-transparent gray-white descriptions */
+    color: rgba(237, 237, 237, 0.75); 
     line-height: 1.7;
     margin-bottom: 3rem;
     flex-grow: 1;
@@ -535,7 +546,7 @@ section:nth-of-type(even) {
 
 .skill-btn:hover {
     background: var(--main-color);
-    color: var(--bg-color); /* Inverts colors cleanly on selection action */
+    color: var(--bg-color); 
     box-shadow: 0 4px 20px rgba(0, 171, 240, 0.4);
     transform: scale(1.03);
 }
@@ -770,30 +781,6 @@ section:nth-of-type(even) {
     font-weight: 500;
 }
 
-.form-status-msg {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-    font-weight: 500;
-    text-align: center;
-    min-height: 2.2rem;
-}
-
-.form-status-msg.success {
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-}
-
-.form-status-msg.error {
-    color: #ff3333;
-    text-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
-}
-
-@media screen and (max-width: 576px) {
-    .contact-card {
-        padding: 3rem 2rem;
-    }
-}
-
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media screen and (max-width: 992px) {
     .home {
@@ -835,6 +822,7 @@ section:nth-of-type(even) {
         gap: 2.5rem;
     }
 }
+
 /* --- JAVASCRIPT FORM SUBMISSION STATUS STYLES --- */
 .form-status-msg {
     font-size: 1.5rem;
@@ -842,6 +830,7 @@ section:nth-of-type(even) {
     font-weight: 500;
     transition: all 0.3s ease;
     text-align: center;
+    min-height: 2.2rem;
 }
 
 .form-status-msg.success {
@@ -852,4 +841,10 @@ section:nth-of-type(even) {
 .form-status-msg.error {
     color: #ff3333;
     text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+}
+
+@media screen and (max-width: 576px) {
+    .contact-card {
+        padding: 3rem 2rem;
+    }
 }
