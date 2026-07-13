@@ -8,9 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Prevent standard page reload behavior on form submit
             event.preventDefault();
 
-            // REPLACE THE STRING BELOW WITH YOUR ACTUAL FORMSPREE ID ENDPOINT
-            // Example: "https://formspree.io/f/xbjnkyrq"
-            const endpoint = "https://formspree.io/f/YOUR_ACTUAL_FORMSPREE_ID";
+            // Your Formspree Endpoint ID
+            const endpoint = "https://formspree.io/f/xaqryjwe";
 
             // Gather field values into a FormData object
             const formData = new FormData(form);
