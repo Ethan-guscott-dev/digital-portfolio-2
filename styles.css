@@ -689,6 +689,102 @@ section:nth-of-type(even) {
     margin-bottom: 2rem !important;
 }
 
+/* --- INTERACTIVE GRADES COLLAPSIBLE STYLES --- */
+.interactive-tag-btn {
+    background: rgba(0, 171, 240, 0.1);
+    color: var(--main-color);
+    border: 1px solid rgba(0, 171, 240, 0.4);
+    padding: 0.6rem 1.4rem;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.interactive-tag-btn:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 12px rgba(0, 171, 240, 0.4);
+}
+
+.interactive-tag-btn i {
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+}
+
+.interactive-tag-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* Expandable Panel container */
+.expandable-grades {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background: rgba(8, 27, 41, 0.6);
+    border-radius: 1.5rem;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.4s ease, padding 0.4s ease;
+    margin-top: 0;
+    padding: 0 2.5rem;
+}
+
+/* Open transition state */
+.expandable-grades.open {
+    opacity: 1;
+    margin-top: 2.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(0, 171, 240, 0.25);
+}
+
+.grades-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 3rem;
+}
+
+@media screen and (max-width: 650px) {
+    .grades-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}
+
+.grade-item {
+    font-size: 1.35rem;
+    color: var(--text-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(237, 237, 237, 0.08);
+    padding-bottom: 0.8rem;
+    text-align: left;
+}
+
+.grade-item strong {
+    font-weight: 500;
+}
+
+.grade-item span {
+    color: var(--main-color);
+    font-weight: 600;
+    background: rgba(0, 171, 240, 0.12);
+    padding: 0.2rem 1rem;
+    border-radius: 0.6rem;
+}
+
+.grades-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 171, 240, 0.25);
+    font-size: 1.5rem;
+    text-align: right;
+    color: var(--text-bg-color);
+}
+
 /* --- CONTACT FORM FIELD STYLING --- */
 .contact-section {
     min-height: 100vh;
