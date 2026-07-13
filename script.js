@@ -53,3 +53,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// INTERACTIVE EDUCATION GRADES PANEL
+    const toggleBtn = document.getElementById("toggle-grades-btn");
+    const gradesPanel = document.getElementById("grades-panel");
+
+    if (toggleBtn && gradesPanel) {
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = gradesPanel.classList.toggle("open");
+            toggleBtn.classList.toggle("active");
+
+            if (isOpen) {
+                // Dynamically sets max-height to the scrollable height of the element
+                gradesPanel.style.maxHeight = gradesPanel.scrollHeight + "px";
+            } else {
+                gradesPanel.style.maxHeight = "0";
+            }
+        });
+    }
